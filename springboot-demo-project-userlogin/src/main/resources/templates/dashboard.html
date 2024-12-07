@@ -13,6 +13,7 @@
 		<span th:text="${user.username}"></span>
 	</div>
 	<form th:action="@{/update}" th:object="${user}" method="post">
+		<input type="hidden" th:field="*{id}" />
 		<div>
 			<label>First Name:</label>
 			<input type="text" th:field="*{firstName}" required />

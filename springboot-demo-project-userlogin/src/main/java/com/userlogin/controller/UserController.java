@@ -90,6 +90,6 @@ public class UserController {
 		} else {
 			model.addAttribute("error", "User not found!");
 		}
-		return "update"; // Return to dashboard.html
+		return "dashboard"; // Return to dashboard.html
 	}
 }
