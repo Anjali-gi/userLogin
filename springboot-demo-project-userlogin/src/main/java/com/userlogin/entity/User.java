@@ -1,9 +1,6 @@
 package com.userlogin.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 @Entity
 public class User {
@@ -17,15 +14,42 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
-	
-	public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-	
+	private String profile;
+	@Transient
+	public String getPhotosImgPath(){
+		if(profile==null)return null;
+
+		return  "/user-profile/" +id+"/"+profile;
+	}
+
+	// For profile picture (stored as a file path or URL)
+	private String gender;
+	private String country;
+	private String address;
+	private String phoneNumber;
+	private String dob; // Stored as a string in "yyyy-MM-dd" format
+
+	public User() {
+	}
+
+	// Constructor with all fields
+	public User(String firstName, String lastName, String username, String password, String email, String profile,
+				String gender, String country, String address, String phoneNumber, String dob) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.profile = profile;
+		this.gender = gender;
+		this.country = country;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.dob = dob;
+	}
+
+	// Getters and Setters for all fields
 
 	public Long getId() {
 		return id;
@@ -67,18 +91,59 @@ public class User {
 		this.password = password;
 	}
 
-	// Default constructor
-	public User() {
+	public String getEmail() {
+		return email;
 	}
 
-	// Constructor with all fields
-	public User(String firstName, String lastName, String username, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	// Getters and Setters
-	
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
 }
